@@ -8,6 +8,11 @@
 
 
 #Install Instructions:
+    After you have forked and cloned this  directory, use "bundle install" in your Terminal. 
+
+#Run with:
+
+    Use 'shotgun' in Terminal to display page on your http://localhost:9393 
 
 
 #Contributer's Guide:
