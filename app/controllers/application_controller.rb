@@ -13,7 +13,8 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  # get '/user/:id' do
-  #   erb :user
-  # end
+  get '/user/:id' do
+    
+    erb :user_id
+  end
 end
