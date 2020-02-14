@@ -1,11 +1,11 @@
-class CreateUsers < ActiveRecord::Migration[4.2]
+class CreateUsers < ActiveRecord::Migration
     def change
         create_table :Users do |t|
             t.string :name
             t.integer :age
             t.string :username
 
-            t.timestamps
+            t.timestamps null: false
         end
     end
 end
