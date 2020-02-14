@@ -52,5 +52,13 @@ class UserController < ApplicationController
     end
 
      #user delete action
+     delete '/user/:id' do
+        @user = User.find_by_id(params[:id])
+        if @user
+            @user.destroy
+        else
+            redirect to "/users"
+        end
+     end
 
 end
