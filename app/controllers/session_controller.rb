@@ -1,3 +1,5 @@
+require 'pry'
+
 class SessionController < ApplicationController
     #login
     get '/login' do
@@ -5,8 +7,9 @@ class SessionController < ApplicationController
     end
 
     post '/login' do 
+        binding.pry
         user = User.find_by(username: params[:user][:username])
-
+        
         if user && user.authenticate(params[:user][:username])
             session[:user_id] = user.user_id
             redirect to "/users/#{user.id}"

@@ -1,6 +1,7 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
+  
   # configure :public_folder, :views, and enable(and set) secret sessions "tea" cause I like to drink tea and read poetry!
   configure do
     set :public_folder, 'public'
@@ -16,7 +17,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/user/:id' do
-    @user = Users.find_by(params[:id])
+    @user = User.find_by(params[:id])
     erb :"/users/show"
   end
 
@@ -25,7 +26,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessons' do
-    @user = Users.find_by(username: params[:username], password: [:password])
+    @user = User.find_by(username: params[:username], password: [:password])
 
     if @user
       session[:user_id] = @user.id
