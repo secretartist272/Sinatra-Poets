@@ -48,7 +48,7 @@ class UserController < ApplicationController
     patch '/users/:id' do
         @user = User.find_by_id(params[:id])
         if @user.update(params[:user])
-            redirect to "/user/#{@user.id}"
+            redirect to "/users/#{@user.id}"
             
         else
             erb :"users/edit"
