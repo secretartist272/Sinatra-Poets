@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   # get methods below:
-  # need get for main page, sign up, login, loggout = redirect to main page, edit, post, ect.
+  
   get "/" do
     erb :welcome
   end
@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
 
 
     #helper methods below:
-    #need  helper methods: logged in, current_user, ect.
+    
     def logged_in?
       !!current_user
     end
