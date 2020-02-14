@@ -27,6 +27,11 @@ class UserController < ApplicationController
         end
     end
 
+    #create login
+    get '/login' do
+        erb :"users/login"
+    end
+
     #show users actions
     get '/users/:id' do
         @user = Users.find_by_id(params[:id])
@@ -59,5 +64,10 @@ class UserController < ApplicationController
             redirect to "/users"
         end
      end
+
+    #helper method
+    def login
+        User.find_by(id: session[:user_id])
+    end
 
 end
