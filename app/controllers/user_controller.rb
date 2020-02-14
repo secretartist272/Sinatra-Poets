@@ -40,4 +40,17 @@ class UserController < ApplicationController
             redirect to '/'
         end
     end
+
+    #user update action
+    patch '/users/:id' do
+        @user = User.find_by_id(params[:id])
+        if @user.update(params[:user])
+            redirect to "/user/#{@user.id}"
+        else
+            erb :"users/edit"
+        end
+    end
+
+     #user delete action
+
 end
