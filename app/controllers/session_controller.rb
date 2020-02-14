@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     end
 
     post '/login' do 
-        user = user.find_by(username: params[:user][:username])
+        user = User.find_by(username: params[:user][:username])
 
         if user && user.authenticate(params[:user][:username])
             session[:user_id] = user.user_id

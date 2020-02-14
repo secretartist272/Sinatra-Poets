@@ -27,10 +27,10 @@ class UserController < ApplicationController
         end
     end
 
-    #create login
-    get '/login' do
-        erb :"users/login"
-    end
+    # #create login
+    # get '/login' do
+    #     erb :"users/login"
+    # end
 
     #show users actions
     get '/users/:id' do
