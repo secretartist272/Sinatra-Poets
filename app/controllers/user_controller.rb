@@ -8,7 +8,7 @@ class UserController < ApplicationController
     end
 
     #new user action
-    get '/user/new' do 
+    get '/users/new' do 
         erb :users/new
     end
 
