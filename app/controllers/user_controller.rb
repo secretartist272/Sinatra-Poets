@@ -13,10 +13,28 @@ class UserController < ApplicationController
     end
 
     #create users action:
+    post '/signup' do
+        user = User.new(params["user"])
 
+        if user.save
+            session[:user_id] = user.id 
+            redirect to "/users"
+        else
+            @errors = user.errors.full_messages
+            erb :"/users/new"
+        end
+    end
 
     #show users actions
+    get '/users/:id/edit' do
+        @user = User.find_by_id(params[:id])
 
+        if @user == current_user
+            erb :".user/edit"
+        else
+            redirect to '/'
+        end
+    end
 
     #edit users actions
 
