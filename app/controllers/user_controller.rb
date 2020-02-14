@@ -26,16 +26,18 @@ class UserController < ApplicationController
     end
 
     #show users actions
+    get '/users/:id' do
+        @user = User.find_by_id(params[:id])
+        erb :"/users/show"
+    end
+
+    #edit users actions
     get '/users/:id/edit' do
         @user = User.find_by_id(params[:id])
-
         if @user == current_user
-            erb :".user/edit"
+            erb :"/users/edit"
         else
             redirect to '/'
         end
     end
-
-    #edit users actions
-
 end
