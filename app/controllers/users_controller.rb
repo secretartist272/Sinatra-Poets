@@ -1,6 +1,6 @@
 require 'pry'
 
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
     #index actions:
     get '/users' do
@@ -38,10 +38,19 @@ class UserController < ApplicationController
         erb :"/users/show"
     end
 
+    post '/users/:id' do
+        @user = User.find_by_id(params[:id])
+        erb :"/users/show"
+    end
+
     #edit users actions
     get '/users/:id/edit' do
         @user = User.find_by_id(params[:id])
-        erb :"/users/edit"
+        if @user == current_user
+            erb :"/users/edit"
+        else
+            redirect '/'
+        end
     end
 
     #user update action

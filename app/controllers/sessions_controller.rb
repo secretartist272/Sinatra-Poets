@@ -1,6 +1,6 @@
 require 'pry'
 
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
     #login
     get '/login' do
         erb :"sessions/new"
