@@ -8,12 +8,12 @@ class UserController < ApplicationController
     end
 
     #new user action
-    get '/signup' do 
+    get '/user/new' do 
         erb :users/new
     end
 
     #create users action:
-    post '/signup' do
+    post '/users' do
         user = User.new(params["user"])
 
         if user.save
@@ -34,11 +34,7 @@ class UserController < ApplicationController
     #edit users actions
     get '/users/:id/edit' do
         @user = User.find_by_id(params[:id])
-        if @user == current_user
-            erb :"/users/edit"
-        else
-            redirect to '/'
-        end
+        erb :"/users/edit"
     end
 
     #user update action
