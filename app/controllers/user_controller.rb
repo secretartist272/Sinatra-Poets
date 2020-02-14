@@ -9,11 +9,11 @@ class UserController < ApplicationController
 
     #new user action
     get '/users/new' do 
-        erb :users/new
+        erb :"users/new"
     end
 
     #create users action:
-    post '/users' do
+    post '/signup' do
         user = User.new(params["user"])
 
         if user.save
