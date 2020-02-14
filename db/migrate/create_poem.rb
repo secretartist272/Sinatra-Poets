@@ -1,4 +1,4 @@
-class CreatePoems < ActiveRecord::Migration[5.2]
+class CreatePoems < ActiveRecord::Migration[4.2]
     def change
         create_table :poems do |t|
             t.string :title
