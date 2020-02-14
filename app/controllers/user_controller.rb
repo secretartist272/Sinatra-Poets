@@ -14,7 +14,7 @@ class UserController < ApplicationController
 
     #create users action:
     post '/signup' do
-        user = User.new(params["user"])
+        user = Users.new(params["user"])
 
         if user.save
             session[:user_id] = user.id 
@@ -27,19 +27,19 @@ class UserController < ApplicationController
 
     #show users actions
     get '/users/:id' do
-        @user = User.find_by_id(params[:id])
+        @user = Users.find_by_id(params[:id])
         erb :"/users/show"
     end
 
     #edit users actions
     get '/users/:id/edit' do
-        @user = User.find_by_id(params[:id])
+        @user = Users.find_by_id(params[:id])
         erb :"/users/edit"
     end
 
     #user update action
     patch '/users/:id' do
-        @user = User.find_by_id(params[:id])
+        @user = Users.find_by_id(params[:id])
         if @user.update(params[:user])
             redirect to "/user/#{@user.id}"
         else
@@ -49,7 +49,7 @@ class UserController < ApplicationController
 
      #user delete action
      delete '/user/:id' do
-        @user = User.find_by_id(params[:id])
+        @user = Users.find_by_id(params[:id])
         if @user
             @user.destroy
         else
