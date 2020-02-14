@@ -15,6 +15,18 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  get '/user/:id' do
+    @user = Users.find_by(params[:id])
+    erb :"/users/show"
+  end
+
+  get '/login' do
+
+  end
+
+  get '/logout' do
+
+  end
 
 
     #helper methods below:

@@ -1,3 +1,5 @@
+require 'pry'
+
 class UserController < ApplicationController
 
     #index actions:
@@ -42,6 +44,7 @@ class UserController < ApplicationController
         @user = Users.find_by_id(params[:id])
         if @user.update(params[:user])
             redirect to "/user/#{@user.id}"
+            
         else
             erb :"users/edit"
         end
