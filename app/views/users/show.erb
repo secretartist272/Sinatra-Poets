@@ -1,10 +1,18 @@
-<h1><%= @user.name %>'s Account Page</h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-<p>Age: <%= @user.age %></p>
+    <h1><%= @user.name %>'s Account Page</h1>
 
-<p>Edit <a href="/users/<%= @user.id%>/edit"><%= @user.name %></a></p>
+    <p>Age: <%= @user.age %></p>
 
-<form action="/users/<%= @user.id%>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete User">
-</form>
+    <p>Edit <a href="/users/<%= @user.id%>/edit"><%= @user.name %></a></p>
+
+    <form action="/users/<%= @user.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete User">
+    </form>
+  </head>
+</html>
