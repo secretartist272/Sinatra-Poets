@@ -1,0 +1,5 @@
+<ul>  
+    <% @poems.each do |poem| %>
+        <li><a href="/poems/<%= poem.id%>"><%= poem.name %></a></li>
+    <% end %>
+</ul>

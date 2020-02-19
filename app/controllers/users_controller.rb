@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     #new user action
     get '/users/new' do 
-        erb :"users/new"
+        erb :"/users/new"
     end
 
     #create users action:
