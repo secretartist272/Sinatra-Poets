@@ -22,14 +22,15 @@ class PoemsController < ApplicationController
     
     get '/poems/:id/edit' do
       @poem = Poem.find_by_id(params[:id])
+      erb :"/poems/edit"
+    end
+    
+    patch '/poems/:id' do
+      @poem = Poem.find_by_id(params[:id])
       @poem.title = params[:title]
       @poem.content = params[:content]
       @poem.save
       redirect to "/poems/#{@poem.id}"
-    end
-    
-    patch '/poems/:id' do
-      
     end
     
     put '/poems/:id' do

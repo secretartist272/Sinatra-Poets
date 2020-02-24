@@ -56,6 +56,9 @@ class UsersController < ApplicationController
     #user update action
     patch '/users/:id' do
         @user = User.find_by_id(params[:id])
+        @user.id = params[:id]
+        @user.name = params[:name]
+        @user.age = params[:age]
         if @user.update(params[:user])
             redirect to "/users/:id"
             
