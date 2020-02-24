@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
         if user.save
             session[:user_id] = user.id 
-            redirect to "/users"
+            redirect to "/users/id"
         else
             @errors = user.errors.full_messages
             erb :"/users/new"
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     patch '/users/:id' do
         @user = User.find_by_id(params[:id])
         if @user.update(params[:user])
-            redirect to "/users/#{@user.id}"
+            redirect to "/users/:id"
             
         else
             erb :"users/edit"
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
         if @user
             @user.destroy
         else
-            redirect to "/users"
+            redirect to "/"
         end
      end
 
