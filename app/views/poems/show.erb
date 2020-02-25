@@ -1,11 +1,13 @@
-<h1><%= @poems.name %>'s  Page</h1>
+<h3><%= @poem.title %></h3>
+<p><%= @poem.content %></p>
 
-    <p>Age: <%= @user.age %></p>
+<p>Written By: <%= @poem.user.name %></p>
 
-    <p>Edit <a href="/users/<%= @user.id%>/edit"><%= @user.name %></a></p>
-
-    <form action="/users/<%= @user.id%>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete User">
-    </form>
-
+<% if authorized_to_edit?(@poem) %>
+  <a href="/poems/<%= @poem.id %>/edit">Edit Entry</a>
+  <br><br>
+  <form class="" action="/poems/<%= @poem.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Entry">
+  </form>
+<% end %>
