@@ -1,18 +1,11 @@
 require 'pry'
 
 class UsersController < ApplicationController
-
-    
-
-    #new user action
-    get '/users/new' do 
-        erb :"/users/new"
-    end
     
     #create login
     get '/login' do
         redirect_if_logged_in
-        erb :"users/login"
+        erb :login
     end
 
     post '/login' do
@@ -29,7 +22,7 @@ class UsersController < ApplicationController
     #create users action:
     get '/signup' do
         redirect_if_logged_in
-        erb :"users/new"
+        erb :signup
     end
 
     post '/signup' do
@@ -39,7 +32,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id 
             redirect "/users/#{@user.id}"
         else
-            redirect '/users/new'
+            redirect '/signup'
         end
     end
 
@@ -49,7 +42,7 @@ class UsersController < ApplicationController
     get '/users/:id' do
         @user = User.find_by(id: params[:id])
         redirect_if_not_logged_in
-        
+
         erb :"/users/show"
     end
 
@@ -57,31 +50,7 @@ class UsersController < ApplicationController
         @user = User.find_by_id(params[:id])
         erb :"/users/show"
     end
-
-    #edit users actions
-    get '/users/:id/edit' do
-        @user = User.find_by_id(params[:id])
-        if @user == current_user
-            erb :"/users/edit"
-        else
-            redirect '/'
-        end
-    end
-
-    #user update action
-    patch '/users/:id' do
-        @user = User.find_by_id(params[:id])
-        @user.id = params[:id]
-        @user.name = params[:name]
-        @user.age = params[:age]
-        if @user.update(params[:user])
-            redirect to "/users/:id"
-            
-        else
-            erb :"users/edit"
-        end
-    end
-
+    
      #user delete action
      delete '/user/:id' do
         @user = User.find_by_id(params[:id])
@@ -90,6 +59,11 @@ class UsersController < ApplicationController
         else
             redirect to "/"
         end
+     end
+
+     get '/logout' do
+         session.clear
+         redirect '/'
      end
 
     #helper method
