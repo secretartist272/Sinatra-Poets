@@ -35,7 +35,7 @@ class PoemsController < ApplicationController
     redirect_if_not_logged_in
     set_poem
     
-    if authorized_to_edit?(@poem)
+    if authorized_edit?(@poem)
       erb :"/poems/edit"
     else  
       redirect "users/#{current_user.id}"
@@ -59,7 +59,7 @@ class PoemsController < ApplicationController
   delete '/poems/:id' do 
     set_poem
     
-    if authorized_to_edit?(@poem)
+    if authorized_edit?(@poem)
       @poem.destroy
       redirect '/poems'
     else
