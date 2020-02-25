@@ -48,16 +48,6 @@ class UsersController < ApplicationController
         @user = User.find_by_id(params[:id])
         erb :"/users/show"
     end
-    
-     #user delete action
-     delete '/user/:id' do
-        @user = User.find_by_id(params[:id])
-        if @user
-            @user.destroy
-        else
-            redirect to "/"
-        end
-     end
 
      get '/logout' do
          session.clear
