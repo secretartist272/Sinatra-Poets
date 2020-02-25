@@ -8,6 +8,6 @@ use Rack::MethodOverride
 
 use UsersController
 
-use SessionsController
+use PoemsController
 
 run ApplicationController
