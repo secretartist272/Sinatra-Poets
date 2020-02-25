@@ -2,11 +2,15 @@
   <input id="hidden" type="hidden" name="_method" value="patch">
   <div>
     <label for="title">Title: </label>
-    <input type="text" name="title">
+     <textarea id="title" name="title" rows="auto" column="10">
+<%= @poem.title%>
+        </textarea>
   </div>
   <div>
     <label for="content">Content: </label>
-    <input type="text" name="content">
+     <textarea id="content" name="content" rows="auto" column="20">
+<%= @poem.content%>
+      </textarea>
   </div>
   <div>
     <input type="submit" value="submit">

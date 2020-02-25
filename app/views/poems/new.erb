@@ -1,19 +1,19 @@
 <h1><Create Poem></h1>
   
 <form action="/poems/new" method="post">
-     <div>
+    <div>
         <label for="title">Title: </label>
-        <input type="text" name="user[title]" id="title">
+        <textarea id="title" name="title" rows="auto" column="10">
+Place Title Here!
+        </textarea>
     </div>
     <div>
         <label for="content">Content: </label>
-        <input type="text" name="user[content]" id="content">
+        <textarea id="content" name="content" rows="auto" column="20">
+Type your poem in here!
+        </textarea>
     </div>
-    
     <input type="submit" value="Publish Poem">
 </form>
-<%# 
-<br>
-<textarea rows="4" cols="50" name="comment" form="usrform">
-Enter text here...</textarea>
-    %>
+
+   
