@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 3) do
 
   create_table "poems", force: :cascade do |t|
     t.string   "title"
-    t.integer  "author_id"
+    t.integer  "user_id"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
