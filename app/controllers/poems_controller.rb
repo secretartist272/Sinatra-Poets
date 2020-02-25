@@ -49,16 +49,14 @@ class PoemsController < ApplicationController
     set_poem
 
     if @poem.user == current_user && params[:content] != ""
-      @poem.update(content: params[:content]))
+      @poem.update(content: params[:content])
       redirect to "/poems/#{@poem.id}"
     else 
       redirect "users/#{current_user.id}"
     end
   end
     
-   
-    
-  # delete action
+   # delete action
   delete '/poems/:id' do 
     set_poem
     
@@ -70,7 +68,7 @@ class PoemsController < ApplicationController
     end
   end
 
-  helper do
+  helpers do 
 
     def set_poem
       @poem = Poem.find(params[:id])
