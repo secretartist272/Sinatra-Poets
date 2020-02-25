@@ -1,5 +1,6 @@
-<ul>  
-    <% @poems.each do |poem| %>
-        <li><a href="/poems/<%= poem.id%>"><%= poem.name %></a></li>
-    <% end %>
-</ul>
+<h1>ALL Poems</h1>
+<% @poems.each do |poem| %>
+  <h4><a href="/poems/<%= poem.id %>"><strong><%= poem.title %></strong></a></h4>
+  <p>By: <%= poem.user.name %></p>
+  <br><br>
+<% end %>

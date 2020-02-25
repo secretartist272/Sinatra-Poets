@@ -3,7 +3,6 @@ class PoemsController < ApplicationController
   #index action 
   get '/poems' do
       @poems = Poem.all 
-
       erb :"/poems/index"
   end
   
@@ -49,7 +48,7 @@ class PoemsController < ApplicationController
     set_poem
 
     if @poem.user == current_user && params[:content] != ""
-      @poem.update(content: params[:content])
+      @poem.update(content: params[:content], title: params[:title])
       redirect to "/poems/#{@poem.id}"
     else 
       redirect "users/#{current_user.id}"
