@@ -57,13 +57,15 @@ class PoemsController < ApplicationController
     
    # delete action
   delete '/poems/:id' do 
-    set_poem
     
-    if authorized_edit?(@poem)
-      @poem.destroy
-      redirect '/poems'
-    else
-      redirect '/poems'
+    if logged_in?
+      @poem = Poem.find_by_id(params[:id])
+      if @poem && @poem.user == current_user
+        @poem.delete
+        redirect '/poems'
+      else
+        redirect '/login'
+      end
     end
   end
 

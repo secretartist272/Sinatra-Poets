@@ -5,4 +5,11 @@
       <nav>
         <ul>
             <li><a href="/poems/new">Add A Poem</a></li>
+        </ul>
+  
+  <br><br>
+  <form class="" action="/users/<%= @user.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete Account">
+  </form>
     

@@ -49,6 +49,18 @@ class UsersController < ApplicationController
         erb :"/users/show"
     end
 
+    delete '/users/:id' do
+        if logged_in?
+            @user = User.find_by_id(params[:id])
+            if @user == current_user
+              @user.destroy
+              redirect '/'
+            else
+              redirect '/login'
+            end
+        end
+    end
+
      get '/logout' do
          session.clear
          redirect '/'

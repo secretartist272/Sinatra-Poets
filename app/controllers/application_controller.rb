@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
     end
     
     def authorized_edit?(poem)
-      poem.user == current_user
+      poem.user = current_user
     end
 
     def redirect_if_logged_in
