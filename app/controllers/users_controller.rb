@@ -2,39 +2,54 @@ require 'pry'
 
 class UsersController < ApplicationController
 
-    #index actions:
-    get '/users' do
-        @users = User.all 
-
-        erb :"/users/index"
-    end
+    
 
     #new user action
     get '/users/new' do 
         erb :"/users/new"
     end
+    
+    #create login
+    get '/login' do
+        redirect_if_logged_in
+        erb :"users/login"
+    end
 
-    #create users action:
-    post '/signup' do
-        user = User.new(params["user"])
+    post '/login' do
+        @user = User.find_by(username: params[:username])
 
-        if user.save
-            session[:user_id] = user.id 
-            redirect to "/users/id"
+        if @user && @user.authenticate(params[:password])
+            session[:user_id]
+            redirect "users/#{@user.id}"
         else
-            @errors = user.errors.full_messages
-            erb :"/users/new"
+            redirect '/login'
         end
     end
 
-    # #create login
-    # get '/login' do
-    #     erb :"users/login"
-    # end
+    #create users action:
+    get '/signup' do
+        redirect_if_logged_in
+        erb :"users/new"
+    end
+
+    post '/signup' do
+        @user = User.new(params["user"])
+
+        if @user.save
+            session[:user_id] = @user.id 
+            redirect "/users/#{@user.id}"
+        else
+            redirect '/users/new'
+        end
+    end
+
+    
 
     #show users actions
     get '/users/:id' do
-        @user = User.find_by_id(params[:id])
+        @user = User.find_by(id: params[:id])
+        redirect_if_not_logged_in
+        
         erb :"/users/show"
     end
 
