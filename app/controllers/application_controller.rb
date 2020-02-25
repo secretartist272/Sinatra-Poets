@@ -13,7 +13,6 @@ class ApplicationController < Sinatra::Base
   # get methods below:
   
   get "/" do
-    redirect_if_logged_in
     erb :welcome
   end
 
@@ -41,7 +40,7 @@ class ApplicationController < Sinatra::Base
     end
     
     def authorise_to_edit?(poem)
-      poem_entry.user == current_user
+      poem.user == current_user
     end
 
     def redirect_if_logged_in
