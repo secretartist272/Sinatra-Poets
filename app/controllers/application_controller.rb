@@ -13,40 +13,42 @@ class ApplicationController < Sinatra::Base
   # get methods below:
   
   get "/" do
+    redirect_if_logged_in
     erb :welcome
   end
 
-  get '/user/:id' do
-    @user = User.find_by(params[:id])
-    erb :"users/show"
+#logout
+  get '/logout' do
+    session = {}
+    redirect to '/'
   end
 
-  get '/session/login' do
-    erb :"sessions/login"
+  post '/logout' do
+      session.clear
+      redirect to '/'
   end
 
-  post '/sessons' do
-    @user = User.find_by(username: params[:username], password: [:password])
-
-    if @user
-      session[:user_id] = @user.id
-      redirect to '/user/:id'
-    end
-    redirect '/user/home'
-  end
-
-  get '/user/home' do
-    @user = User.find(session[:user_id])
-    erb :'/users/home'
-  end
 
     #helper methods below:
-    
+  helpers do
+
     def logged_in?
       !!current_user
     end
 
     def current_user
-      User.find_by(id: session[:user_id])
+      @current_user ||= User.find_by(id: session[:user_id])
     end
+    
+    def authorise_to_edit?(poem_entry)
+      poem_entry.user == current_user
+    end
+
+    def redirect_if_logged_in
+      if logged_in?
+        redirect "/users/#{current_user.id}"
+      end
+    end
+  end
+      
 end
