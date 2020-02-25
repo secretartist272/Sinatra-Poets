@@ -40,9 +40,9 @@ class PoemsController < ApplicationController
     end
     
     # update action
-    put '/poems/:id' do
+    # put '/poems/:id' do
       
-    end
+    # end
     
     # delete action
     delete '/poems/:id' do 
