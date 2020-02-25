@@ -14,12 +14,12 @@ class PoemsController < ApplicationController
   end
   
   # create action 
-  post '/poems' do
+  post '/poems/new' do
     redirect_if_not_logged_in
 
-    if params[:title] && params[:content] != ""
-      @poem = Poem.create(:title => params[:title], :content => params[:content])
-      redirect to "/poems/#{@poem.id}"
+    if params[:content] != ""
+      @poem = Poem.create(content: params[:content], user_id: current_user.id, title: params[:title])
+      redirect "/poems/#{@poem.id}"
     else  
       redirect '/poems/new'
     end
