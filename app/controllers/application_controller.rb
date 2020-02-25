@@ -16,17 +16,6 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-#logout
-  get '/logout' do
-    session = {}
-    redirect to '/'
-  end
-
-  post '/logout' do
-      session.clear
-      redirect to '/'
-  end
-
 
     #helper methods below:
   helpers do
