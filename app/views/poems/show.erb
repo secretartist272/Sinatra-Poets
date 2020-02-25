@@ -3,7 +3,7 @@
 
 <p>Written By: <%= @poem.user.name %></p>
 
-<% if authorized_to_edit?(@poem) %>
+<% if authorized_edit?(@poem) %>
   <a href="/poems/<%= @poem.id %>/edit">Edit Entry</a>
   <br><br>
   <form class="" action="/poems/<%= @poem.id %>" method="post">
