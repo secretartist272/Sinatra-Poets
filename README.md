@@ -1,22 +1,27 @@
 
-##sinatra-poets
+# Sinatra-{oets
 
-#Short Description:
+##Short Description:
     Sinatra-Poets is meant for Poets that want to express and store their poetry online. A poet  will be able to sign up with a username and unique password. In the Users account, the user will be able to edit, delete and add new posts of their own. The user will also be able to logout and log in to their account. 
 
-    <!-- There will be the possibility of a guest section, where non-users will be able to view archives of all poems. -->
+    <!-- Non-users are able to view archives of all poems, but not edit or delete them! -->
+
+## Installation
+Here is how you install my project after you have already forked it:
+
+```bash
+git clone <ssh link>
+bundle install
+```
 
 
-#Install Instructions:
-    After you have forked and cloned this  directory, use "bundle install" in your Terminal. 
-
-#Run with:
-
-    Use 'shotgun' in Terminal to display page on your http://localhost:9393 
+## Usage
+Run `shotgun`.
+Head to `localhost:9393` and sign up, log in, and get started keeping track of your widgets!
 
 
-#Contributer's Guide:
+## Contributing
+Feel free to contribute, all are welcome!
 
-
-#Link to License:
-
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
