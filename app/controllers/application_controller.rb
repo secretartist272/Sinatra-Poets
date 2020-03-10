@@ -16,6 +16,8 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  
+
 
     #helper methods below:
   helpers do

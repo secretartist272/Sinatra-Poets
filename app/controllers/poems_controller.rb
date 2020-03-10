@@ -1,3 +1,5 @@
+require 'pry'
+
 class PoemsController < ApplicationController
 
   #index action 
@@ -67,6 +69,17 @@ class PoemsController < ApplicationController
         redirect '/login'
       end
     end
+  end
+
+  get "/my_poems" do
+    @user = current_user
+    @poems = current_user.poem
+    
+    @poems = @poems.sort_by do |poem|
+      poem.title
+    end
+     
+    erb :my_poems
   end
 
   helpers do 
